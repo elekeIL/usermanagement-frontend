@@ -3,7 +3,7 @@
 To get started with this project , you will need to follow these steps:
 
 - Run npm --force install to install all the required packages
-- Then naviaget to the package.json file and run the local script. this would serve the app on por 3600
+- Then navigate to the package.json file and run the local script. this would serve the app on por 3600
 - Once these are done you are free to work with the app
   Enjoy!
 
