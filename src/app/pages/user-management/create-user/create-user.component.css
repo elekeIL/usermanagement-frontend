@@ -1,0 +1,26 @@
+.password-check{
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  opacity: 0.6;
+  font-size: 11px;
+  line-height: 140%;
+  margin-bottom: 0.25rem;
+}
+.password-check .icon{
+  font-size: 12px;
+}
+.password-check.passed{
+  opacity: 1;
+  color: #000000;
+}
+.password-check.passed .icon{
+  color: #198745;
+}
+
+
+.small-fade-inline {
+  display: inline;
+  font-size: 12px;
+  opacity: 0.5;
+}

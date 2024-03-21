@@ -1,0 +1,458 @@
+/* Copyright [2023] [MadeByRaymond (Daniel Raymond Obiekwe)] [www.madebyraymond.io] */
+
+/***************** Root / General Styles  *****************/
+
+/*********************************************************   */
+:root {
+  --hr-color: #e5e9ef;
+  --sidebar-width: 240px;
+  --sidebar-overlay-bg-color: rgb(0 0 0 / 23%);
+  --sidebar-bg-color: #f8f8f8;
+  --sidebar-border-color: #c8d0df;
+  --sidebar-text-color: #2e353a;
+  --sidebar-padding: 0.5rem;
+  --sidebar-font-size: 14px;
+  --sidebar-icon-font-size: 19px;
+  --sidebar-item-active-bg-color: #fbfbfb;
+  --sidebar-item-active-text-color: var(--primary-color);
+  --sidebar-item-hover-bg-color: #fbfbfb;
+  --sidebar-item-hover-text-color: inherit;
+  --bottom-nav-height: 0px;
+  --header-height: 65px;
+  --header-bg-color: #182664;
+  --header-text-color: #fff;
+  --footer-bg-color: #f5f8f7;
+  --footer-text-color: #102e32;
+  --footer-font-size: 13px;
+  --page-padding: 30px;
+}
+
+@media (max-width: 992px) {
+  :root {
+    --bottom-nav-height: 74px;
+    --sidebar-width: 0px;
+    --sidebar-overlay-bg-color: none;
+  }
+
+  .d-custom-none {
+    display: none;
+  }
+
+  .offcanvas-for-md-addUser {
+    display: none;
+  }
+
+  .siderbar,
+  .sidebar-overlay {
+    display: none !important;
+  }
+
+  .menubar .nav-items-list {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .menubar .nav-items-list .nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--sidebar-text-color);
+    padding: 0.75rem 2rem 0.75rem 1rem;
+    transition: 0.3s;
+  }
+
+  .menubar .nav-items-list .nav-item .nav-link * {
+    pointer-events: none;
+  }
+
+  .menubar .nav-items-list .nav-item .nav-link.active {
+    color: var(--sidebar-item-active-text-color);
+    background-color: var(--sidebar-item-active-bg-color);
+  }
+
+  .menubar .nav-items-list .nav-item .nav-icon {
+    font-size: 24px;
+    margin-right: 0.5rem;
+  }
+
+  .menubar .custom-sidebar-items {
+    padding: var(--sidebar-padding);
+  }
+
+  .offcanvas.offcanvas-bottom {
+    --bs-offcanvas-height: 80vh !important;
+  }
+}
+
+@media (min-width: 992px) {
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1280px) {
+  /* your styles for devices between 992px and 1200px */
+  .card-search-list {
+    display: none;
+  }
+}
+
+/* Laptop (1280x800, 1366x768, 1440x900) */
+@media only screen and (min-width: 1280px) and (max-width: 1439px) {
+  /* CSS styling for laptop screens goes here */
+
+  .card-search-list {
+    display: none;
+  }
+}
+
+/* Desktop (1920x1080) */
+@media only screen and (min-width: 1920px) and (max-width: 2559px) {
+  /* CSS styling for desktop screens goes here */
+  .card-search-list {
+    display: none;
+  }
+}
+
+/* Large desktop (2560x1440) */
+@media only screen and (min-width: 2560px) {
+  /* CSS styling for large desktop screens goes here */
+  .card-search-list {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-height: 65px;
+    --header-height-original: 65px;
+    --page-padding: 10px;
+  }
+}
+
+/* @media (min-width: 766px) and (max-width: 991px) {
+  :root {
+    --sidebar-width: 238px !important;
+  }
+} */
+
+.full-width-layout {
+  --sidebar-width: 0px !important;
+  --bottom-nav-height: 0px !important;
+}
+
+.full-height-layout {
+  --header-height: 0px !important;
+}
+
+/***************** Dashbaord Header Styles  *****************/
+
+/***********************************************************   */
+.dash-header {
+  background-position: center;
+  background-size: cover;
+  background-color: var(--header-bg-color);
+  background-blend-mode: multiply;
+  min-height: var(--header-height);
+  color: var(--header-text-color);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 135%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.sidebar-full-height .dash-header {
+  left: var(--sidebar-width);
+}
+
+.dash-header .dropdown-divider {
+  --bs-dropdown-divider-bg: #e5e9ef;
+}
+
+.dash-header .dropdown-menu {
+  --bs-dropdown-border-color: #e5e9ef;
+}
+
+.dash-header .header-top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dadada;
+  padding: 12px var(--page-padding);
+}
+
+.dash-header .header-top-section .header-top-left-container,
+.dash-header .header-top-section .header-top-right-container {
+  display: flex;
+  align-items: center;
+}
+
+.dash-header .user-dropdown-menu .dropdown-item {
+  padding: 6px 16px;
+}
+
+.navbar-brand img {
+  width: auto;
+  max-height: 40px;
+}
+
+.burger-btn {
+  display: none;
+  cursor: pointer;
+}
+
+.full-width .burger-btn {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .burger-btn {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar-full-height .dash-header {
+    left: 0;
+  }
+}
+
+/***************** Dashboard Sidebar Styles *****************/
+
+/***********************************************************   */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: var(--bottom-nav-height);
+  height: calc(100vh - var(--bottom-nav-height));
+  width: var(--sidebar-width);
+  background: #f1f1f1;
+  padding: 0;
+  padding-top: calc(var(--header-height) + 0px);
+  transition: 0.3s ease-out;
+  z-index: 999;
+}
+
+.sidebar-full-height .sidebar {
+  padding-top: 0;
+}
+
+.sidebar .sidebar-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+  background: var(--sidebar-bg-color);
+  border-right: 1px solid var(--sidebar-border-color);
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+.sidebar .sidebar-top {
+  padding: var(--sidebar-padding);
+}
+
+.sidebar .nav-items-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.sidebar .nav-items-list .nav-item .nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: var(--sidebar-font-size);
+  color: var(--sidebar-text-color);
+  padding: 0.75rem 2rem 0.75rem 1rem;
+  margin-left: var(--sidebar-padding);
+  margin-right: var(--sidebar-padding);
+  margin-bottom: 0.25rem;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.sidebar .nav-items-list .nav-item .nav-link * {
+  pointer-events: none;
+}
+
+.sidebar .nav-items-list .nav-item .nav-link.active {
+  color: var(--sidebar-item-active-text-color);
+  background-color: var(--sidebar-item-active-bg-color);
+}
+
+.sidebar .nav-items-list .nav-item .nav-link:hover {
+  color: var(--sidebar-item-hover-text-color);
+  background-color: var(--sidebar-item-hover-bg-color);
+}
+
+.sidebar .nav-items-list .nav-item .nav-icon {
+  font-size: var(--sidebar-icon-font-size);
+  margin-right: 0.5rem;
+}
+
+.sidebar .custom-sidebar-items {
+  padding: var(--sidebar-padding);
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    left: calc(var(--sidebar-width) * -1);
+  }
+
+  .sidebar-full-height .sidebar {
+    padding-top: calc(var(--header-height) + 0px);
+  }
+
+  .sidebar .sidebar-overlay {
+    position: fixed;
+    display: block;
+    background: var(--sidebar-overlay-bg-color);
+    inset: 0 101vw 0 -101vw;
+    z-index: -1;
+    transition: 0.2s 0.1s ease-out;
+  }
+
+  .sidebar.active .sidebar-overlay {
+    left: 0;
+    right: 0;
+    transition: 0.15s ease-out;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+}
+
+/****************** Dashboard Main Content ******************/
+
+/***********************************************************   */
+.dash-main {
+  padding-top: calc(var(--header-height));
+  padding-bottom: calc(20px + var(--bottom-nav-height));
+  width: calc(100% - var(--sidebar-width));
+  margin-left: calc(var(--sidebar-width));
+  min-height: 100vh;
+}
+
+@media (max-width: 767px) {
+  .dash-main {
+    width: calc(100%);
+    margin-left: 0;
+  }
+}
+
+/* Main Content */
+.dash-content {
+  padding: 25px var(--page-padding);
+  min-height: calc(100vh - calc(var(--header-height)) - 53px);
+}
+
+.invoice-vertical-done-text {
+  color: #3aab56;
+  border: 1px solid #3aab56 !important;
+}
+
+.invoice-vertical-inactive-text {
+  color: #6b6a6a;
+  opacity: 0.5;
+  border: 1px solid #6b6a6a !important;
+}
+
+.invoice-vertical-blue-text {
+  color: #0B5ED7;
+  opacity: 0.5;
+  border: 1px solid #0B5ED7 !important;
+}
+
+.invoice-vertical-inactive-text-opacity {
+  opacity: 0.5;
+
+}
+
+.vertical-done {
+  border-left: 1px solid #3aab56;
+  height: 50px;
+}
+
+.vertical-no-height {
+  border-left: 1px solid #3aab56;
+}
+
+.vertical-inactive {
+  border-left: 1px solid #6b6a6a;
+  height: 50px;
+}
+
+.vertical-blue {
+  border-left: 1px solid #0B5ED7;
+  height: 50px;
+}
+
+/********************* Dashboard Footer *********************/
+
+/***********************************************************   */
+.dash-footer {
+  background-color: var(--footer-bg-color);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  font-weight: 400;
+  font-size: var(--footer-font-size);
+  line-height: 140%;
+  color: var(--footer-text-color);
+  padding: 18px var(--page-padding);
+}
+
+/********************* Dashboard Bottom Nav *********************/
+
+/***********************************************************   */
+.bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: var(--bottom-nav-height);
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid var(--line-color);
+  box-shadow: 0 -1px 10px var(--card-shadow-color);
+  position: fixed;
+  bottom: calc(var(--bottom-nav-height) - 78px);
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.bottom-nav .b-nav-button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  width: 30%;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.bottom-nav .b-nav-button .icon {
+  font-size: 24px;
+}
+
+.bottom-nav .b-nav-button:hover .icon,
+.bottom-nav .b-nav-button.active .icon {
+  color: #182664;
+}
+
+@media (min-width: 992px) {
+  .bottom-nav {
+    display: none;
+  }
+}

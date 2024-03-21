@@ -1,0 +1,13 @@
+<ng-container *ngIf="isTouched && errors && errors.length">
+  <ng-container *ngIf="singularError">
+    <small
+      [style.font-size.px]="fontSize"
+      [style.color]="color + '!important'"
+      class="text-danger"
+    >{{ firstError }}<br
+    /></small>
+  </ng-container>
+  <ng-container *ngIf="!singularError">
+    <small translate="" class="text-danger" *ngFor="let e of errors">{{ e }}<br/></small>
+  </ng-container>
+</ng-container>

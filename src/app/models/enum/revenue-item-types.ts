@@ -1,0 +1,5 @@
+export enum REVENUE_ITEM_TYPE {
+  ACCOUNT_TOP_UP = 'ACCOUNT_TOP_UP',
+  OTHER = 'OTHER',
+  CUSTOM = 'CUSTOM'
+}

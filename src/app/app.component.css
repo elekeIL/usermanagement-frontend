@@ -1,0 +1,22 @@
+@media only screen and (max-width: 374px) {
+  .alert-top-xsm{
+    margin-top: 2.8rem;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .alert-top{
+    margin-top: 1.3rem;
+  }
+}
+
+main {
+  min-height: calc( 100vh - 173px);
+}
+
+
+app-site-footer {
+  position: sticky;
+  bottom: 0;
+}
+

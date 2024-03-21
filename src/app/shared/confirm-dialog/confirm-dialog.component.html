@@ -1,0 +1,33 @@
+<div class=" m-0">
+  <div class="modal-header">
+    <div class="pull-left">
+      <h6 class="modal-title" id="modal-title">{{ header }}</h6>
+    </div>
+    <button (click)="close()" class="close pull-right" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+            <div>
+                <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 95px;width: 95px;margin: 0px auto 20px;">
+        <circle cx="12.9276" cy="12.4286" r="12.1934" fill="white" stroke="#FFC107" stroke-width="0.343475"/>
+        <path d="M12.0068 9.26399V8.15108H12.9746V9.26399H12.0068ZM12.0068 16.0329V10.3231H12.9746V16.0329H12.0068Z" fill="#FFC107"/>
+        </svg>
+            </div>
+            <div style="font-size: 1rem;font-weight: 600;margin: 0 auto 10px;max-width: 340px;">
+                {{ body }}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button (click)="close()" class="btn btn-outline-danger" type="button">
+      <i class="fa fa-times mr-1 fa-spinner "></i
+      >Close
+    </button>
+    <button (click)="confirm()" class="btn btn-success" type="button">
+      <i class="fa " [ngClass]="{'fa-spinner fa-spin':loading,'fa-check':!loading}"></i>
+      {{positiveButtonText}}
+    </button>
+    </div>
+</div>

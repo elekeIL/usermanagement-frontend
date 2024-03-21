@@ -1,0 +1,129 @@
+.dark-blue-datepicker .bs-datepicker-container {
+  background-color: darkblue;
+  color: white;
+}
+
+.dark-blue-datepicker .bs-datepicker-head {
+  background-color: darkblue;
+  color: white;
+}
+
+.dark-blue-datepicker .bs-datepicker-body {
+  background-color: darkblue;
+  color: white;
+}
+tooltip-item {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.55);
+  cursor: default;
+}
+
+.close-btn {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: #007bff;
+}
+
+.close-btn::before,
+.close-btn::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 14px;
+  top: 50%;
+  left: -10px; /* changed right to left */
+  background-color: currentColor;
+  transform-origin: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.close-btn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.close-btn:hover::before {
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+
+.close-btn:hover::after {
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.close-btn:hover {
+  color: #dc3545;
+}
+
+.tab-navs {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  padding: 0px;
+  gap: 20px;
+
+  width: 100%;
+
+  border-bottom: 2px solid #e4e3e3;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.tab-navs .tab-item {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 2px;
+  gap: 10px;
+
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 120%;
+
+  text-align: center;
+  text-transform: capitalize;
+
+  white-space: nowrap;
+
+  border-bottom: 2px solid transparent;
+
+  margin: -1px 0;
+
+  color: #3a3a3a;
+
+  cursor: pointer;
+}
+.tab-navs .tab-item.active,
+.tab-navs .active .tab-item {
+  color: #232d42;
+  font-weight: 500;
+
+  border-bottom: 2px solid #232d42;
+}
+.custom-dropdown {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 14px 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 15px;
+}
+
+
+
+
+

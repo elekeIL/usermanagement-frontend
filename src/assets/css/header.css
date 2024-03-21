@@ -1,0 +1,120 @@
+/* -------------------------------------------- */
+/*  Site Header  */
+/* -------------------------------------------- */
+
+.site-header {
+ background: url("/assets/img/new-landing-page/frost.png"), no-repeat var(--hero-dark);
+  padding: 12px 0px;
+}
+
+.site-header .site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.site-header .menu-toggle-btn {
+  all: unset;
+  font-size: 2rem;
+  display: none;
+}
+/* .site-header .logo-link-wrapper{}
+.site-header .logo-link{} */
+.site-header .logo-link .logo {
+  height: 45px;
+  width: auto;
+}
+
+.site-header .nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.site-header .nav-link {
+  font-family: var(--font-family-secondary);
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  text-transform: capitalize;
+  color: var(--text-color);
+}
+
+.site-header .nav-link.btn {
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+}
+.site-header .nav-link.btn-primary {
+  color: #fff;
+}
+.site-header .nav-link.dropdown-icon::after {
+  content: url("data:image/svg+xml,%3Csvg width='0.9em' height='0.9em' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.88478 6.1254C7.95856 6.19927 8 6.29941 8 6.40382C8 6.50822 7.95856 6.60836 7.88478 6.68223L5.78351 8.78351C5.70963 8.85729 5.60949 8.89873 5.50509 8.89873C5.40068 8.89873 5.30054 8.85729 5.22667 8.78351L3.1254 6.68223C3.08669 6.64617 3.05564 6.60267 3.03411 6.55434C3.01257 6.50601 3.00099 6.45384 3.00006 6.40094C2.99913 6.34804 3.00886 6.29549 3.02867 6.24643C3.04849 6.19737 3.07798 6.15281 3.1154 6.1154C3.15281 6.07798 3.19737 6.04849 3.24643 6.02867C3.29549 6.00886 3.34804 5.99913 3.40094 6.00006C3.45384 6.00099 3.50601 6.01257 3.55434 6.03411C3.60267 6.05564 3.64616 6.08669 3.68223 6.1254L5.50509 7.94825L7.32794 6.1254C7.40181 6.05162 7.50195 6.01017 7.60636 6.01017C7.71077 6.01017 7.8109 6.05162 7.88478 6.1254Z' fill='currentColor'/%3E%3C/svg%3E%0A");
+  margin-left: 0.15rem;
+}
+
+.site-header .mobile-only-links {
+  display: none;
+}
+
+.menu-toggle-btn * {
+  pointer-events: none;
+}
+.menu-toggle-btn {
+  cursor: pointer;
+}
+
+@media (max-width: 996px) {
+  .site-nav .nav-list {
+    display: none;
+  }
+  .site-header.show .site-nav .nav-list.main-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #000;
+    text-align: left;
+    padding: 0 calc(var(--bs-gutter-x) * 0.5);
+    z-index: 0;
+    padding-top: 70px;
+  }
+
+  .site-nav .nav-list.main-menu .nav-link {
+    text-align: left;
+
+    font-size: 22px;
+    padding: 12px 8px;
+  }
+  .site-nav .nav-list.main-menu .dropdown-menu {
+    transform: translate(0) !important;
+    border: 1px solid rgba(0, 0, 0, 0.141);
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    pointer-events: none;
+  }
+  .site-nav .nav-list.main-menu .dropdown-menu {
+    position: relative !important;
+    pointer-events: all;
+  }
+
+  .site-header .menu-toggle-btn {
+    display: inline-flex;
+  }
+
+  .site-header .mobile-only-links {
+    display: block;
+  }
+
+  .site-header .mobile-only-100w {
+    width: 100%;
+    z-index: 1;
+  }
+}

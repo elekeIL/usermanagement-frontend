@@ -1,0 +1,39 @@
+:root {
+  --font-family-primary: "Jost",  Arial, Helvetica, sans-serif;
+  --font-family-secondary: "Jost",  Arial, Helvetica, sans-serif;
+
+  --text-color: #4d4d4d;
+  --header-color: #000000;
+
+  --primary-text-color: #1c00ca;
+    --primary-color: #2656e3;
+    --danger-color: #D62B2B;
+    --primary-deep-color: #2d48bc;
+
+  --primary-text-color: #126bef;
+
+  --link-color: #416bef;
+  --link-color-hover: #126bef;
+
+    --intranet-body-bg: #F8F8F8;
+
+
+      --green: #4FA129;
+  --hero-dark: #201F24;
+  --text-secondary: #4c5775;
+  --text-dim: #aeaeae;
+  --background-color: #f2f7ff;
+  --bs-blue: #416BEF;
+  --bs-blue-50: #0d6efd50;
+  --bs-blue-25: #0d6efd25;
+  --bs-link-hover-color: #0a58ca;
+  --so-white: #ffffff;
+  --so-black: #292e47;
+  --so-black-hover: #272b40;
+  --text-black: #292e47;
+  --white: #fff;
+  --bg-color: #f2f7ff;
+  --dark: #121C52;
+  --yellow: #FAA821;
+  --bad: #fb3d3d;
+}

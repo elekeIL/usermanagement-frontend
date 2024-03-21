@@ -1,0 +1,269 @@
+<div class="dash-content mt-3 gy-4 px-3 vh-100 overflow-hidden">
+  <div class="d-flex flex-wrap align-items-center justify-content-between">
+    <div>
+      <h1 class="fs-26">User Management</h1>
+      <p class="fs-14 mb-4">Create user accounts.</p>
+    </div>
+
+    <div class="dropdown">
+      <button
+        class="btn btn-outline-primary fs-18 p-2 "
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="offcanvas"
+        data-bs-backdrop="static"
+        data-bs-target="#createUser"
+        aria-controls="createUser"
+      >
+        <span
+          class="iconify"
+          data-icon="solar:user-broken"
+          style="font-size: 1.5rem; vertical-align: middle"
+        ></span>
+        <span class="ml-2">Create user</span>
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="showErrorMessageTrigger" class="alert alert-danger mt-4 container">
+    <div class="d-flex mb-2">
+      <span
+        class="iconify me-2"
+        data-icon="clarity:warning-alt-filled"
+        style="font-size: 24px"
+      ></span>
+      {{ getErrorMessage() }}
+    </div>
+  </div>
+
+  <div
+    *ngIf="showSuccessMessageTrigger"
+    [ngClass]="{ anim: showSuccessMessageTrigger }"
+    class="d-custom-none alert alert-success my-4 fs-14 text-center"
+  >
+    {{ getSuccessMessage() | titlecase }}
+  </div>
+  <ng-container *ngIf="activeTab === tabIDs.USERS">
+    <div>
+      <div class="p-md-3" style="background-color: #ededed6e">
+        <div
+          *ngIf="isXsScreen || isSmScreen || isMdScreen"
+          class="d-flex align-items-center justify-content-between"
+        >
+          <h5 class="my-2">Filters</h5>
+          <div class="text-end my-2">
+            <button
+              (click)="showFilters = !showFilters"
+              class="btn btn-outline-secondary rounded-pill fs-16 py-1 px-3"
+              aria-expanded="false"
+              aria-controls="collapseFilters"
+            >
+              <span class="iconify icon" data-icon="basil:filter-outline"></span>
+              <span [hidden]="showFilters">Show Filters</span>
+              <span [hidden]="!showFilters">Hide Filters</span>
+            </button>
+          </div>
+        </div>
+        <div class="collapse d-lg-block" [ngClass]="{ show: showFilters }" id="collapseFilters">
+          <form [formGroup]="form" class="row g-4" autocomplete="off">
+            <div class="col-md-6 col-lg-4 col-xl-3">
+              <div class="form-group mt-2">
+                <label class="form-label"> Start Date (Dob range) </label>
+                <div class="input-group">
+                  <input
+                    #startDate="bsDatepicker"
+                    [maxDate]="now()"
+                    [bsConfig]="{
+                      dateInputFormat: 'DD/MM/YYYY',
+                      containerClass: 'theme-dark-blue'
+                    }"
+                    bsDatepicker
+                    type="text"
+                    class="form-control dark-blue-datepicker"
+                    placeholder="dd/mm/yyyy"
+                    formControlName="startDate"
+                  />
+                  <span class="input-group-text bg-white pointer" (click)="startDate.toggle()">
+                    <span class="iconify" data-icon="uil:calender" data-width="24"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3">
+              <div class="form-group mb-0 mt-2">
+                <label class="form-label"> End Date (Dob range) </label>
+                <div class="input-group">
+                  <input
+                    #endDate="bsDatepicker"
+                    [maxDate]="now()"
+                    [minDate]="getMinDate()"
+                    [bsConfig]="{
+                      dateInputFormat: 'DD/MM/YYYY',
+                      containerClass: 'theme-dark-blue'
+                    }"
+                    bsDatepicker
+                    type="text"
+                    class="form-control dark-blue-datepicker"
+                    placeholder="dd/mm/yyyy"
+                    formControlName="endDate"
+                  />
+                  <span class="input-group-text bg-white pointer" (click)="endDate.toggle()">
+                    <span class="iconify" data-icon="uil:calender" data-width="24"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 text-end mb-3">
+              <button (click)="onSearchClick()" type="button" class="btn btn-primary">
+                <ng-container *ngIf="!searching">
+                  <span>
+                    <span class="iconify icon" data-icon="basil:search-outline"></span>
+                  </span>
+                </ng-container>
+
+                <ng-container *ngIf="searching">
+                  <span>
+                    <span class="iconify me-2" data-icon="eos-icons:loading"> </span>
+                  </span>
+                </ng-container>
+
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+<!--     -->
+
+      <div
+        class="d-flex align-items-center justify-content-between flex-wrap my-4"
+      >
+        <p class="text-secondary mb-0">
+          Total records:
+          {{ totalRecords? "(" + totalRecords + ")" : "(0)" }}
+        </p>
+      </div>
+
+      <div class="row mt-3">
+        <div class="card d-custom-none p-3">
+          <div class="table-responsive">
+            <table
+              class="table py-1 px-0 table-borderless table-striped fs-16 exp-paragraph-font overflow-auto"
+            >
+<!--              <caption>Users Table</caption>-->
+              <thead>
+              <tr>
+                <th scope="col">S/N</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Date Added</th>
+              </tr>
+              </thead>
+              <tbody>
+              <ng-container *ngIf="!searching && resultArray?.length > 0">
+                <tr
+                  class="justify-content-center"
+                  *ngFor="let row of resultArray; let i = index"
+                >
+                  <th scope="row">{{ i + offset + 1 }}</th>
+                  <td>
+                    {{ row.firstName ? (row.firstName | titlecase) : '_' }}
+                  </td
+                  ><td>
+                    {{ row.lastName ? (row.lastName | titlecase) : '_' }}
+                  </td>
+                  <td>{{ row?.email ? row?.email : '' }}</td>
+                  <td>{{ row?.phoneNumber ? row?.phoneNumber : '_' }}</td>
+                  <td>{{ row?.dateOfBirth | date : 'dd/MM/yyyy' }}</td>
+                  <td>{{ row?.createdAt | date : 'dd/MM/yyyy' }}</td>
+                </tr>
+              </ng-container>
+
+              <ng-container *ngIf="resultArray?.length < 1 && !searching">
+                <tr>
+                  <td colspan="9" class="text-center">
+                    <span class="iconify" data-icon="uil:search" data-width="24"></span>
+                    <span class="ms-2">No record found</span>
+                  </td>
+                </tr>
+              </ng-container>
+
+              <ng-container *ngIf="searching">
+                <tr>
+                  <td colspan="9" class="text-center">
+                    <span class="iconify" data-icon="uil:search" data-width="24"></span>
+                    <span class="ms-2">Searching...</span>
+                  </td>
+                </tr>
+              </ng-container>
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            class="align-items-md-center d-flex justify-content-md-between flex-wrap flex-column-reverse flex-md-row rounded-top px-2 py-2 mt-3"
+            style="margin-bottom: -1rem; color: #4e3367"
+          >
+            <app-page-length
+              [pageLength]="getFilter().limit || 10"
+              (pageLengthChanged)="changeLimit($event)"
+            ></app-page-length>
+
+            <div class="add-group-btn text-right mt-3 mb-md-3">
+              <pagination
+                (pageChanged)="onPageChange($event)"
+                [boundaryLinks]="true"
+                [itemsPerPage]="limit || 10"
+                [(ngModel)]="page"
+                [maxSize]="5"
+                [totalItems]="totalRecords || 0"
+                firstText="&laquo;"
+                lastText="&raquo;"
+                nextText="&rsaquo;"
+                previousText="&lsaquo;"
+              >
+              </pagination>
+            </div>
+          </div>
+        </div>
+
+        <ng-container>
+          <div
+            class="offcanvas {{ isXsScreen || isSmScreen ? 'offcanvas-bottom' : 'offcanvas-end' }}"
+            tabindex="-1"
+            id="createUser"
+            aria-labelledby="offcanvasRightLabel"
+            data-bs-backdrop="static"
+          >
+            <div class="offcanvas-header border-bottom border-1 justify-content-end">
+              <button
+                #dismissButton
+                type="button"
+                class="close-btn btn-primary"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+                (click)="clearForm()"
+              >
+                <span>Cancel</span>
+              </button>
+            </div>
+            <div class="offcanvas-body">
+              <app-create-user
+                (userCreated)="onDismiss()"
+
+              ></app-create-user>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+
+</div>
+
